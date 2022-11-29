@@ -28,29 +28,23 @@ for (let i = 0; i < 3134; i++) {
 
 
 // button functionality
+function start (e) {
+    e.target.classList.add('colored-in')
+}
 
 let addDrawingCapability = () => {
     let everyPixel = document.querySelectorAll('.pixel')
     everyPixel.forEach(pixel => {
-        pixel.addEventListener('mouseenter', () => {
-            pixel.classList.add('colored-in')
-        })
+        pixel.addEventListener('mouseenter', start)
     })
 }
-
-
 
 let removeDrawingCapability = () => {
     let everyPixel = document.querySelectorAll('.pixel')
     everyPixel.forEach(pixel => {
-        pixel.removeEventListener('mouseenter', addDrawingCapability)
+        pixel.removeEventListener('mouseenter', start)
     })
 }
-
-let startDrawing = () => {
-    addDrawingCapability()
-}
-
 
 let clearFunction = function() {
     let everyPixel = document.querySelectorAll('.pixel')
@@ -61,4 +55,4 @@ let clearFunction = function() {
 
 clearButton.addEventListener('click', clearFunction)
 stopButton.addEventListener('click', removeDrawingCapability)
-startButton.addEventListener('click', startDrawing)
+startButton.addEventListener('click', addDrawingCapability)
